@@ -1,10 +1,12 @@
 /** Libs */
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import {Provider} from 'react-redux';
+import {Provider} from 'react-redux';
 
-const elem = '<h1>Hello from React 3</h1>';
-ReactDOM.render(elem, document.getElementById('app'));
+// App root and imported reducers inside configureStore
+import AppRouter from "./routers/AppRouter";
+
+ReactDOM.render(<h1>Hello from React 3</h1>, document.getElementById('app'));
 
 // /** App root and imported reducers inside configureStore */
 // import AppRouter, {history} from './routers/AppRouter.js'
@@ -14,11 +16,9 @@ ReactDOM.render(elem, document.getElementById('app'));
 // import {startSetExpenses} from "./actions/expenses"
 // import {login, logout} from "./actions/auth"
 //
-// // Css
-// import 'normalize.css/normalize.css';
-// import './styles/styles.scss';
-// import 'react-dates/initialize';
-// import 'react-dates/lib/css/_datepicker.css';
+// Css
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
 
 // // DB
 // import {firebase} from './firebase/firebase';

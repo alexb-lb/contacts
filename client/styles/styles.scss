@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
+
+// reset styles. Normalize.css imports first in app.js file
+@import "./base/settings";
+@import "./base/base";
+@import "./base/typography";
+
+// General styles
+//@import "./forms";
+
+// Components styles
+@import "../components/ContactsList/ContactsList";
