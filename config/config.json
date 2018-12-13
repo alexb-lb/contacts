@@ -1,0 +1,10 @@
+{
+  "development": {
+    "HTTP_PORT": "3000",
+    "HOST": "0.0.0.0",
+    "DB_URI": "0.0.0.0",
+    "DB_USER": "developer",
+    "DB_PASSWORD": "12345",
+    "DB_NAME": "contacts"
+  }
+}
