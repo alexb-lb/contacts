@@ -36,7 +36,7 @@ module.exports = (environment) => {
         inject: false,
         hash: true,
         template: path.join(__dirname, 'client', 'public', 'app.html'),
-        filename: 'app.html'
+        filename: path.join(__dirname, 'client', 'public', 'dist', 'app.html')
       }),
       new WebpackMd5Hash()
     ],
