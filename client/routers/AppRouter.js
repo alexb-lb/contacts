@@ -3,7 +3,7 @@ import {Router, Route, Switch, Link, NavLink} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 // compontents
-const AddContact = () => (<div>add  contact</div>)
+import AddContact from '../components/AddContact/AddContact';
 import ContactsList from '../components/ContactsList/ContactsList';
 
 // history

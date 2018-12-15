@@ -9,4 +9,10 @@
 //@import "./forms";
 
 // Components styles
+@import "../components/AddContact/AddContact";
+@import "../components/AddContactButton/AddContactButton";
+@import "../components/ContactListItem/ContactListItem";
 @import "../components/ContactsList/ContactsList";
+@import "../components/EditContact/EditContact";
+@import "../components/Header/Header";
+@import "../components/SearchContact/SearchContact";

@@ -9,32 +9,14 @@ $dark-grey: #333;
 $red: #FF1939;
 $blue: #286ebb;
 
-// social buttons
-$google-color: #b5301f;
-$facebook-color: #29487d;
-$vkontakte-color: #4a76a8;
-
-
-/** FORM **/
-$form-container-border-color: #d8dadb;
-$input-border-color: #ddd;
-
-
-/** RADIUS **/
-$border-radius: 0.5rem;
-
 
 /** FONT SIZES **/
-$font-s-size: 1.4rem;
-$font-m-size: 1.6rem;
-$font-l-size: 3.6rem;
+$font-s-size: 0.6rem;
+$font-m-size: 1rem;
+$font-l-size: 1.5rem;
 
 
 /** SPACINGS **/
-$gap-s-size: 1rem;
-$gap-m-size: 1.5rem;
+$gap-s-size: 0.5rem;
+$gap-m-size: 1rem;
 $gap-l-size: 2rem;
-$gap-xl-size: 3rem;
-$gap-xxl-size: 5rem;
-
-$desktop-breakpoint: 600px; //rem works incorrect
