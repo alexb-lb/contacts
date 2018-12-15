@@ -12,19 +12,12 @@
   .btn-delete-contact {
     padding: 3px;
     line-height: 0;
-    display: none;
 
     svg {
       height: $font-m-size;
       path {
         fill: $white;
       }
-    }
-  }
-
-  &:hover {
-    .btn-delete-contact {
-      display: flex;
     }
   }
 }

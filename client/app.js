@@ -11,7 +11,7 @@ import configureStore from './store/configureStore';
 import Header from './components/Header/Header'
 //
 // // Actions
-// import {startSetExpenses} from "./actions/expenses"
+// import {startSetcontacts} from "./actions/contacts"
 // import {login, logout} from "./actions/auth"
 //
 /** CSS */

@@ -3,8 +3,8 @@ import {Router, Route, Switch, Link, NavLink} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 // compontents
-import AddContact from '../components/AddContact/AddContact';
-import ContactsList from '../components/ContactsList/ContactsList';
+import AddContactPage from '../components/AddContactPage/AddContactPage';
+import ContactsListPage from '../components/ContactsListPage/ContactsListPage';
 
 // history
 export const history = createHistory();
@@ -14,8 +14,8 @@ const AppRouter = () => (
   <Router history={history}>
     <div>
       <Switch>
-        <Route path="/" component={ContactsList} exact={true}/>
-        <Route path="/add" component={AddContact} exact={true}/>
+        <Route path="/" component={ContactsListPage} exact={true}/>
+        <Route path="/add" component={AddContactPage} exact={true}/>
       </Switch>
     </div>
   </Router>

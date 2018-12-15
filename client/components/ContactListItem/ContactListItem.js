@@ -1,30 +1,32 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ExpenseListItem = ({name, amount, createdAt, id}) => (
-  /**
-   <Link className="list-item" to={`/edit/${id}`}>
-   <div>
-   <h3 className="list-item__title">{description}</h3>
-   <span className="list-item__subtitle">
-   {moment(createdAt).format('MMMM Do, YYYY')}
-   </span>
-   </div>
-   <h3 className="list-item__data">
-   {numeral(amount / 100).format('$0,0.00')}
-   </h3>
-   </Link>
-   */
-
-  <tr className="contact-list-item">
-    <td className="col-md-4 contact-list-item-field" scope="row">
-      <Link to={`/edit/1`}>Alexandr Bobrenko</Link>
+const contactListItem = ({id, name, email, phone, debt, status}) => (
+  <tr className="contact-list-item" data-contact-id={id}>
+    <td className="col-md-2 contact-list-item-field" scope="row">
+      <Link to={`/edit/${id}`}>
+        {name}
+      </Link>
     </td>
-    <td className="col-md-3 contact-list-item-field">
-      <Link to={`/edit/1`}>oknerbob@gmail.com</Link>
+    <td className="col-md-2 contact-list-item-field">
+      <Link to={`/edit/${id}`}>
+        {email}
+      </Link>
     </td>
-    <td className="col-md-3 contact-list-item-field">
-      <Link to={`/edit/1`}>+38 091 971 13 41</Link>
+    <td className="col-md-2 contact-list-item-field">
+      <Link to={`/edit/${id}`}>
+        {phone}
+      </Link>
+    </td>
+    <td className="col-md-2 contact-list-item-field">
+      <Link to={`/edit/${id}`}>
+        {debt}
+      </Link>
+    </td>
+    <td className="col-md-2 contact-list-item-field">
+      <Link to={`/edit/${id}`}>
+        {status}
+      </Link>
     </td>
     <td className="col-md-2">
       <button className="btn btn-danger btn-delete-contact">
@@ -38,4 +40,4 @@ const ExpenseListItem = ({name, amount, createdAt, id}) => (
   </tr>
 );
 
-export default ExpenseListItem;
+export default contactListItem;

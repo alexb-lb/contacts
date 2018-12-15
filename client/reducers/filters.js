@@ -1,25 +1,32 @@
-import moment from 'moment';
-
-/** Filters Reducer **/
 const filtersReducerDefaultState = {
   text: '',
-  sortBy: 'date',
-  startDate: moment().startOf('month'),
-  endDate: moment().endOf('month')
+  sortBy: 'name',
 };
 
 export default  (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
     case 'SET_TEXT_FILTER':
       return {...state, text: action.text};
-    case 'SORT_BY_AMOUNT':
-      return {...state, sortBy: 'amount'};
-    case 'SORT_BY_DATE':
-      return {...state, sortBy: 'date'};
-    case 'SET_START_DATE':
-      return {...state, startDate: action.startDate};
-    case 'SET_END_DATE':
-      return {...state, endDate: action.endDate};
+    case 'SORT_BY_NAME':
+      return {...state, sortBy: 'name'};
+    case 'SORT_BY_NAME_REVERSE':
+      return {...state, sortBy: 'name_reverse'};
+    case 'SORT_BY_EMAIL':
+      return {...state, sortBy: 'email'};
+    case 'SORT_BY_EMAIL_REVERSE':
+      return {...state, sortBy: 'email_reverse'};
+    case 'SORT_BY_PHONE':
+      return {...state, sortBy: 'phone'};
+    case 'SORT_BY_PHONE_REVERSE':
+      return {...state, sortBy: 'phone_reverse'};
+    case 'SORT_BY_DEBT':
+      return {...state, sortBy: 'debt'};
+    case 'SORT_BY_DEBT_REVERSE':
+      return {...state, sortBy: 'debt_reverse'};
+    case 'SORT_BY_STATUS':
+      return {...state, sortBy: 'status'};
+    case 'SORT_BY_STATUS_REVERSE':
+      return {...state, sortBy: 'status_reverse'};
     default:
       return state;
   }
