@@ -24,9 +24,9 @@ export default  (state = filtersReducerDefaultState, action) => {
     case 'SORT_BY_DEBT_REVERSE':
       return {...state, sortBy: 'debt_reverse'};
     case 'SORT_BY_STATUS':
-      return {...state, sortBy: 'status'};
+      return {...state, sortBy: 'notes'};
     case 'SORT_BY_STATUS_REVERSE':
-      return {...state, sortBy: 'status_reverse'};
+      return {...state, sortBy: 'notes_reverse'};
     default:
       return state;
   }

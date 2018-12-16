@@ -7,23 +7,18 @@ import {Provider} from 'react-redux';
 import AppRouter, {history} from './routers/AppRouter.js'
 import configureStore from './store/configureStore';
 
-/** Components */
-import Header from './components/Header/Header'
-//
 // // Actions
 // import {startSetcontacts} from "./actions/contacts"
 // import {login, logout} from "./actions/auth"
-//
+
 /** CSS */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss';
 
-// // Combine imported reducers
 const store = configureStore();
 
 const jsx = (
   <Provider store={store}>
-    <Header/>
     <AppRouter/>
   </Provider>
 );

@@ -10,28 +10,30 @@ import {
   sortByPhoneReverse,
   sortByDebt,
   sortByDebtReverse,
-  sortByStatus,
-  sortByStatusReverse
+  sortByNotes,
+  sortByNotesReverse
 } from '../../actions/filters';
+import {startRemoveContact} from '../../actions/contacts';
 
 
 import ContactListItem from '../ContactListItem/ContactListItem';
 import AddContactButton from '../AddContactButton/AddContactButton';
 import SearchContactsForm from '../SearchContactsForm/SearchContactsForm';
 
-import SearchContacts from '../../selectors/searchContacts';
+import SearchContacts from '../../selectors/sortContacts';
 
 class ContactsListPage extends React.Component {
 
   state = {
+    // capitalize filter from prop eg. "name" -> "Name"
     lastSortBy: this.props.filters.sortBy.charAt(0).toUpperCase() + this.props.filters.sortBy.slice(1),
     reverse: true
   };
 
-  onSearch = elem => this.props.setTextFilter(elem.target.value);
+  onSearch = e => this.props.setTextFilter(e.target.value);
 
-  onSort = elem => {
-    const sortValue = elem.target.getAttribute("data-sort-type");
+  onSort = e => {
+    const sortValue = e.target.getAttribute("data-sort-type");
 
     if (sortValue !== this.state.lastSortBy) {
       this.setState(() => ({reverse: true, lastSortBy: sortValue}));
@@ -47,6 +49,11 @@ class ContactsListPage extends React.Component {
 
     this.setState(state => ({reverse: !state.reverse}));
     return func();
+  };
+
+  onRemove = e => {
+    const id = e.target.closest('.contact-list-item').getAttribute('data-contact-id');
+    this.props.startRemoveContact({id});
   };
 
   render() {
@@ -77,14 +84,14 @@ class ContactsListPage extends React.Component {
                   <th onClick={this.onSort} data-sort-type="Email" className="col-md-2" scope="col">Email</th>
                   <th onClick={this.onSort} data-sort-type="Phone" className="col-md-2" scope="col">Phone</th>
                   <th onClick={this.onSort} data-sort-type="Debt" className="col-md-2" scope="col">Debt</th>
-                  <th onClick={this.onSort} data-sort-type="Status" className="col-md-2" scope="col">Status</th>
+                  <th onClick={this.onSort} data-sort-type="Notes" className="col-md-2" scope="col">Notes</th>
                   <th className="col-md-2" scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody className="contacts-list-body">
                 {
                   this.props.contacts.map(contact => {
-                    return <ContactListItem key={contact.id} {...contact}/>
+                    return <ContactListItem key={contact.id} {...contact} onRemove={this.onRemove}/>
                   })
                 }
                 </tbody>
@@ -112,8 +119,9 @@ const mapDispatchToProps = (dispatch, props) => ({
   sortByPhoneReverse: () => dispatch(sortByPhoneReverse()),
   sortByDebt: () => dispatch(sortByDebt()),
   sortByDebtReverse: () => dispatch(sortByDebtReverse()),
-  sortByStatus: () => dispatch(sortByStatus()),
-  sortByStatusReverse: () => dispatch(sortByStatusReverse()),
+  sortByNotes: () => dispatch(sortByNotes()),
+  sortByNotesReverse: () => dispatch(sortByNotesReverse()),
+  startRemoveContact: data =>  dispatch(startRemoveContact(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsListPage);

@@ -28,7 +28,7 @@ const init = async () => {
   server.route({method: 'GET', path: '/images/{file*}', handler: {directory: { path: './images', listing: true }}});
   server.route({method: 'GET', path: '/dist/{file*}', handler: {directory: { path: './dist', listing: true }}});
 
-  // use React router instead of server routing for all paths
+  // use React router instead of server routing for all of the paths
   server.route({method: 'GET', path: '/{route*}', handler: (request, h) => h.file('./dist/app.html')});
 
   await server.start();

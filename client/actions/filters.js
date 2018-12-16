@@ -12,5 +12,5 @@ export const sortByPhoneReverse = (() => ({type: 'SORT_BY_PHONE_REVERSE'}));
 export const sortByDebt = (() => ({type: 'SORT_BY_DEBT'}));
 export const sortByDebtReverse = (() => ({type: 'SORT_BY_DEBT_REVERSE'}));
 
-export const sortByStatus = (() => ({type: 'SORT_BY_STATUS'}));
-export const sortByStatusReverse = (() => ({type: 'SORT_BY_STATUS_REVERSE'}));
+export const sortByNotes = (() => ({type: 'SORT_BY_STATUS'}));
+export const sortByNotesReverse = (() => ({type: 'SORT_BY_STATUS_REVERSE'}));

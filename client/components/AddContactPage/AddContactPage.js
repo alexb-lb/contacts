@@ -1,35 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import ExpenseForm from './ExpenseForm';
-// import {startAddContact} from '../../actions/contacts';
+import ContactForm from '../ContactForm/ContactForm';
+import {startAddContact} from '../../actions/contacts';
 
 export class AddContactPage extends React.Component {
 
-  // onSubmit = (expense) => {
-  //   this.props.startAddExpense(expense);
-  //   this.props.history.push('/');
-  // };
+  onSubmit = contact => {
+    this.props.startAddContact(contact);
+    this.props.history.push('/');
+  };
 
-  render(){
+  render() {
     return (
-      <div>
-        <div className="page-header">
-          <div className="content-container">
-            <h1 className="page-header__title">Add Expense</h1>
-          </div>
-        </div>
-        <div className="content-container">
-
-        </div>
-      </div>
+      <section className="page-add-contact container">
+        <h1 className="page-add-contact__header">Add contact</h1>
+        <ContactForm onSubmit={this.onSubmit}/>
+      </section>
     )
   }
 };
 
-export default AddContactPage;
+const mapDispatchToProps = (dispatch) => ({
+  startAddContact: contact => dispatch(startAddContact(contact))
+});
 
-// const mapDispatchToProps = (dispatch) => ({
-//   startAddExpense: (expense) => dispatch(startAddExpense(expense))
-// });
-
-// export default connect(undefined, mapDispatchToProps)(AddContact);
+export default connect(undefined, mapDispatchToProps)(AddContactPage);

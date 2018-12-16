@@ -5,7 +5,7 @@ const contactsReducerDefaultState = [
     email: 'oknerbob@gmailc.om',
     phone: '+38 091 971 13 41',
     debt: '0',
-    status: 'alive',
+    notes: 'alive',
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const contactsReducerDefaultState = [
     email: 'jous@gmail.com',
     phone: '+56 082 234 23 45',
     debt: 2000,
-    status: 'alive',
+    notes: 'alive',
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const contactsReducerDefaultState = [
     email: 'caesar@spqr.com',
     phone: 'none',
     debt: 850000,
-    status: 'dead',
+    notes: 'dead',
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const contactsReducerDefaultState = [
     email: '123dragula@transilvania.com',
     phone: '1111111',
     debt: 77777,
-    status: 'always alive',
+    notes: 'always alive',
   },
 ];
 
@@ -38,11 +38,11 @@ export default (state = contactsReducerDefaultState, action) => {
     case 'ADD_CONTACT':
       return [...state, action.contact];
     case 'DELETE_CONTACT':
-      return state.filter(({id}) => id !== action.id);
+      return state.filter(({id}) => +id !== +action.id);
     case 'EDIT_CONTACT':
       return state.map((contact, i, arr) => {
         if (action.id === contact.id) {
-          return {...contact, ...action.updates}; // overwrite object with new props
+          return {...contact, ...action.updates};
         } else {
           return contact;
         }

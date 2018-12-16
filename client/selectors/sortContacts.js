@@ -23,10 +23,10 @@ export default (contacts, {text, sortBy}) => {
         return a.debt > b.debt ? 1 : -1;
       case 'debt_reverse':
         return a.debt < b.debt ? 1 : -1;
-      case 'status':
-        return a.status > b.status ? 1 : -1;
-      case 'status_reverse':
-        return a.status < b.status ? 1 : -1;
+      case 'notes':
+        return a.notes > b.notes ? 1 : -1;
+      case 'notes_reverse':
+        return a.notes < b.notes ? 1 : -1;
     }
   })
 };
