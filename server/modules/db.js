@@ -3,9 +3,9 @@ const Sequelize = require('sequelize');
 // plug in the promise library:
 Sequelize.Promise = global.Promise;
 
-const db = new Sequelize('contacts', 'postgres', 'root', {
-  host: 'localhost',
-  dialect: 'postgres',
+const db = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+  host: process.env.DB_URI,
+  dialect: process.env.DB_DIALECT,
   logging: false,
   returning: true,
 
