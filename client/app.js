@@ -7,9 +7,8 @@ import {Provider} from 'react-redux';
 import AppRouter, {history} from './routers/AppRouter.js'
 import configureStore from './store/configureStore';
 
-// // Actions
-// import {startSetcontacts} from "./actions/contacts"
-// import {login, logout} from "./actions/auth"
+/** Actions */
+import {startSetcontacts} from "./actions/contacts"
 
 /** CSS */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,4 +22,12 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(jsx, document.getElementById('app'));
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
+  }
+};
+
+store.dispatch(startSetcontacts()).then(() => renderApp());

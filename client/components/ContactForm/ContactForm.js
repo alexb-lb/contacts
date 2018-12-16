@@ -34,8 +34,8 @@ class ContactForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    if (!this.state.name.trim() || !this.state.debt) {
-      this.setState(() => ({error: 'Please provide name and debt'}));
+    if (!this.state.name.trim() || !this.state.email.trim()) {
+      this.setState(() => ({error: 'Please provide name and email'}));
     } else {
       this.setState(() => ({error: ''}));
       this.props.onSubmit({
@@ -70,6 +70,7 @@ class ContactForm extends React.Component {
             className="text-input form-control"
             value={this.state.email}
             onChange={this.onEmailChange}
+            required={true}
           />
         </div>
         <div className="form-group">
@@ -88,7 +89,6 @@ class ContactForm extends React.Component {
             className="text-input form-control"
             value={this.state.debt}
             onChange={this.onDebtChange}
-            required={true}
           />
         </div>
         <div className="form-group">

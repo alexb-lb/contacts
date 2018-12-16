@@ -1,7 +1,7 @@
+import axios from 'axios';
 
 export const addContact = contact => ({type: 'ADD_CONTACT', contact});
 
-let idCounter = 5;
 export const startAddContact = (contactData = {}) => {
   return (dispatch, getState) => {
 
@@ -9,14 +9,14 @@ export const startAddContact = (contactData = {}) => {
       return {name, email, phone, debt, notes}
     })(contactData);
 
-
-    setTimeout(() => dispatch(addContact({id: idCounter, ...contact})), 500)
-
-    // // push into Firebase and get back generated ID of contact, return promise
-    // return database.ref(`users/${uid}/contact`).push(contact).then((ref) => {
-    //   // dispatch contact into redux store by passing an contact into addContact func
-    //   dispatch(addContact({id: ref.key, ...contact}));
-    // })
+    return axios.post('/contacts/add', contact)
+      .then(response => {
+        if(response.data.status !== 'OK'){
+          throw response.data
+        }
+        return dispatch(addContact({id: response.data.contacts[0].id, ...contact}))
+      })
+      .catch(err => alert(err.message));
   };
 };
 
@@ -24,10 +24,15 @@ export const removeContact = ({id} = {}) => ({type: 'DELETE_CONTACT', id});
 
 export const startRemoveContact = ({id} = {}) => {
   return (dispatch, getState) => {
-    setTimeout(() => dispatch(removeContact({id})), 500)
-    // return  database.ref(`users/${uid}/contacts/${id}`).remove().then(() => {
-    //   dispatch(removeContact({id}));
-    // });
+
+    return axios.post(`/contacts/${id}/delete`)
+      .then(response => {
+        if(response.data.status !== 'OK'){
+          throw response.data
+        }
+        return dispatch(removeContact({id: response.data.contacts[0].id}));
+      })
+      .catch(err => alert(err.message));
   }
 };
 
@@ -35,31 +40,24 @@ export const editContact = (id, updates = {}) => ({type: 'EDIT_CONTACT', id, upd
 
 export const startEditContact = (id, updates = {}) => {
   return (dispatch, getState) => {
-    setTimeout(() => dispatch(editContact(id, updates)), 500)
-    // return database.ref(`users/${uid}/contacts/${id}`).update(updates).then(() => {
-    //   dispatch(editContact(id, updates))
-    // })
+    return axios.post(`/contacts/${id}/edit`, updates)
+      .then(response => {
+        if(response.data.status !== 'OK'){
+          throw response.data
+        }
+        return dispatch(editContact(response.data.contacts[0].id, response.data.contacts[0]))
+      })
+      .catch(err => alert(err.message));
   }
 };
 
-export const setContacts = contacts => ({type: 'SET_CONTACTS',contacts});
+export const setContacts = contacts => ({type: 'SET_CONTACTS', contacts});
 
-export const startSetContact = () => {
-  // return function to access dispatch method as argument from redux store
+export const startSetcontacts = () => {
   return (dispatch, getState) => {
-    const uid = getState().auth.uid;
-    // return function to access promise chaining further
-    return database.ref(`users/${uid}/contacts`).once('value').then((snapshot) => {
-      const contacts = [];
-      snapshot.forEach((childSnapshot) => {
-        contacts.push(({
-          id: childSnapshot.key,
-          ...childSnapshot.val()
-        }))
-      });
-      // dispatch contact into redux store by passing an contact into addContact func
-      dispatch(setContacts(contacts));
-    });
+    return axios.get('/contacts')
+      .then(response => dispatch(setContacts(response.data.contacts)))
+      .catch(err => alert(err.message));
   };
 };
 
