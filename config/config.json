@@ -1,8 +1,9 @@
 {
   "development": {
-    "HTTP_PORT": "3000",
+    "PORT": "3000",
     "HOST": "0.0.0.0",
-    "DB_URI": "0.0.0.0",
+    "DB_URI": "postgres://zclfrgfipptbvk:f2bb630457b8484225786a8e9d283683c55756a3735fa7fc14158119da00547a@ec2-54-163-245-64.compute-1.amazonaws.com:5432/d5fi6ig3s1v420",
+    "DB_HOST": "0.0.0.0",
     "DB_USER": "postgres",
     "DB_PASSWORD": "root",
     "DB_NAME": "contacts",

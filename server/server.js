@@ -17,8 +17,8 @@ const Logger = require('./modules/Logger');
 
 /** Server config defaulting to NODE_ENV or "development" */
 const server = Hapi.server({
-  port: process.env.HTTP_PORT,
-  host: process.env.HOST,
+  port: process.env.PORT,
+  // host: process.env.HOST,
   routes: {files: { relativeTo: path.join(__dirname, '..', 'client','public') }}
 });
 
